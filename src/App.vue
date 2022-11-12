@@ -10,10 +10,6 @@ export default {
   methods: {
     ...mapActions("movies", ["fetchMovies"]),
   },
-
-  mounted() {
-    this.fetchMovies();
-  },
 };
 </script>
 
