@@ -1,14 +1,29 @@
 <template>
-  <div></div>
+  <div>
+    <movies-list :list="moviesList"></movies-list>
+  </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import MoviesList from "./components/MoviesList.vue";
+
 export default {
   name: "App",
-  components: {},
+
+  components: {
+    MoviesList,
+  },
+
   methods: {
     ...mapActions("movies", ["fetchMovies"]),
+  },
+
+  computed: {
+    ...mapGetters("movies", ["moviesList"]),
+    name() {
+      return this.data;
+    },
   },
 };
 </script>
