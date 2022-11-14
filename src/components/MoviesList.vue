@@ -4,7 +4,10 @@
     <div class="row g-4">
       <template v-if="isExist">
         <div class="col-3" v-for="(movie, key) in list" :key="key">
-          <movie-item :movieItem="movie"></movie-item>
+          <movie-item
+            :movieItem="movie"
+            @mouseover="onMouseOver(movie.Poster)"
+          ></movie-item>
         </div>
       </template>
       <template v-else>
@@ -31,6 +34,12 @@ export default {
     },
   },
 
+  methods: {
+    onMouseOver(poster) {
+      this.$emit("changePoster", poster);
+    },
+  },
+
   computed: {
     isExist() {
       return Boolean(Object.keys(this.list).length);
@@ -43,5 +52,6 @@ export default {
 .list-title {
   font-size: 50px;
   margin-bottom: 30px;
+  color: #fff;
 }
 </style>
