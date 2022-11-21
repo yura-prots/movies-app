@@ -1,39 +1,54 @@
 <template>
   <div class="movies-pagination d-flex justify-content-center">
-    <paginate
+    {{ currentPage }}
+    <b-pagination
       v-model="currentPage"
-      :page-count="total"
-      :page-range="perPage"
-      :prev-text="prevText"
-      :next-text="nextText"
-      :click-handler="clickCallback"
-    />
+      :total-rows="total"
+      :per-page="perPage"
+    ></b-pagination>
   </div>
 </template>
 
 <script>
-import Paginate from "vuejs-paginate-next";
-
 export default {
   name: "MoviesPagination",
 
-  components: {
-    Paginate,
-  },
+  //   data() {
+  //     return {
+  //       currentPage: "",
+  //     };
+  //   },
 
-  data() {
-    return {
-      currentPage: 1,
-      total: 100,
-      perPage: 5,
-      prevText: "&laquo;",
-      nextText: "&raquo;",
-    };
+  props: {
+    currentPage: {
+      type: Number,
+      default: 1,
+    },
+    total: {
+      type: Number,
+      default: 1,
+    },
+    perPage: {
+      type: Number,
+      default: 1,
+    },
   },
 
   methods: {
-    clickCallback(pageNum) {
-      console.log(pageNum);
+    //  clickCallback(pageNum) {
+    //    console.log(pageNum);
+    //  },
+  },
+
+  computed: {
+    currentPageModel: {
+      get() {
+        console.log(this.currentPage);
+        return this.currentPage;
+      },
+      set(value) {
+        console.log(value);
+      },
     },
   },
 };

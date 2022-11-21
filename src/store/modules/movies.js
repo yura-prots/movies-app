@@ -30,6 +30,7 @@ const moviesStore = {
         top250IDs.slice(from, to),
     currentPage: ({ currentPage }) => currentPage,
     moviesPerPage: ({ moviesPerPage }) => moviesPerPage,
+    moviesLength: ({ top250IDs }) => Object.keys(top250IDs).length,
   },
 
   mutations: {

@@ -5,7 +5,11 @@
       :list="moviesList"
       @changePoster="onChangePoster"
     ></movies-list>
-    <movies-pagination></movies-pagination>
+    <movies-pagination
+      v-model="currentPage"
+      :per-page="moviesPerPage"
+      :total="moviesLength"
+    ></movies-pagination>
   </div>
 </template>
 
@@ -38,7 +42,12 @@ export default {
   },
 
   computed: {
-    ...mapGetters("movies", ["moviesList"]),
+    ...mapGetters("movies", [
+      "moviesList",
+      "currentPage",
+      "moviesPerPage",
+      "moviesLength",
+    ]),
     name() {
       return this.data;
     },
